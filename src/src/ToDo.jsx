@@ -1,23 +1,21 @@
 import React from "react";
 
 class ToDo extends React.Component {
-  constructor(props) {
-    super(props);
-    // 상위 컴포넌트로부터 넘겨받은 item 속성의 값을 item이라는 이름으로 저장
-    this.state = { item: props.item };
-  }
   render() {
+    const { item } = this.props; // props에서 item을 직접 사용
     return (
       <div className="ToDo">
         <input
           type="checkbox"
-          id={this.state.item.id}
-          name={this.state.item.id}
-          checked={this.state.item.done}
+          id={item.id}
+          name={item.id}
+          checked={item.done}
+          readOnly // 체크박스는 읽기 전용으로 설정
         />
-        <label id={this.state.item.id}>{this.state.item.title}</label>
+        <label htmlFor={item.id}>{item.title}</label>
       </div>
     );
   }
 }
+
 export default ToDo;
